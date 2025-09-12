@@ -1,11 +1,10 @@
 <?php
-// Enhanced mail.php for ICS 2.2 Assignment
-// Import PHPMailer classes into the global namespace
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-// Load Composer's autoloader
+
 require 'vendor/autoload.php';
 
 class EmailService {
@@ -26,7 +25,7 @@ class EmailService {
     
     private function initializeDatabase() {
         try {
-            // Database configuration - adjust these settings for your database
+            
             $host = 'localhost';
             $dbname = 'ics_database';
             $username = 'root';
@@ -35,7 +34,7 @@ class EmailService {
             $this->pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-            // Create users table if it doesn't exist
+            
             $this->createUsersTable();
             
         } catch (PDOException $e) {
@@ -63,12 +62,12 @@ class EmailService {
     private function configureSMTP() {
         try {
             // Server settings
-            $this->mail->SMTPDebug = 0; // Disable debug output for production
+            $this->mail->SMTPDebug = 0; /
             $this->mail->isSMTP();
             $this->mail->Host = 'smtp.gmail.com'; // Fixed Gmail SMTP
             $this->mail->SMTPAuth = true;
             $this->mail->Username = 'fatushabdulle00@gmail.com';
-            $this->mail->Password = 'oaad kjlh xeoe brzr'; // Consider using environment variables
+            $this->mail->Password = 'oaad kjlh xeoe brzr'; 
             $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
             $this->mail->Port = 465;
             
@@ -270,7 +269,7 @@ class EmailService {
     }
 }
 
-// Example usage and testing
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle form submission
     $name = $_POST['name'] ?? '';
